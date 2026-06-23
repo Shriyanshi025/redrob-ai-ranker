@@ -1,0 +1,40 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Outputs
+outputs/
+
+# Models
+models/
+
+# Logs
+*.log
+
+# Large datasets
+data/candidates.jsonl
+
+# Optional future processed datasets
+data/*.parquet
+data/*.feather
+data/*.pkl
