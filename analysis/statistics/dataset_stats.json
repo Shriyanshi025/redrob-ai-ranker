@@ -1,0 +1,18 @@
+{
+    "total_records": 100000,
+    "valid_records": 100000,
+    "invalid_records": 0,
+    "empty_lines": 0,
+    "smallest_record_size": 2923,
+    "largest_record_size": 9925,
+    "total_record_size": 487159903,
+    "processing_time_seconds": 3.8258303999973577,
+    "required_field_presence": {
+        "candidate_id": 100000,
+        "profile": 100000,
+        "career_history": 100000,
+        "education": 100000,
+        "skills": 100000,
+        "redrob_signals": 100000
+    }
+}
