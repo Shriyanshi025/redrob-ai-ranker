@@ -29,9 +29,9 @@ class CandidateRanker:
         )
 
         final_score = (
-            0.50 * capability_score
-            + 0.30 * fit_score
-            + 0.20 * hireability_score
+            0.60 * capability_score
+            + 0.33 * fit_score
+            + 0.07 * hireability_score
         )
 
         return final_score
