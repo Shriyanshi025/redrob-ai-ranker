@@ -14,6 +14,12 @@ from src.features.signals import (
     calculate_profile_quality_score,
     calculate_engagement_score,
 )
+from src.features.skills import (
+    calculate_skill_score,
+)
+from src.features.company import (
+    calculate_company_score,
+)
 
 
 @dataclass
@@ -35,6 +41,8 @@ class CandidateFeatureVector:
     retrieval_system_score: float = 0.0
 
     ranking_system_score: float = 0.0
+    
+    skill_score: float = 0.0
 
     embedding_score: float = 0.0
     
@@ -53,6 +61,8 @@ class CandidateFeatureVector:
     engagement_score: float = 0.0
 
     recruiter_response_score: float = 0.0
+    
+    company_score: float = 0.0
 
     github_score: float = 0.0
 
@@ -93,6 +103,14 @@ class FeatureBuilder:
 
             engagement_score=
             calculate_engagement_score(
+                candidate
+            ),
+            skill_score=
+            calculate_skill_score(
+                candidate
+            ),
+            company_score=
+            calculate_company_score(
                 candidate
             ),
         )
