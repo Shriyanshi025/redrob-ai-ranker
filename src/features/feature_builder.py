@@ -20,6 +20,9 @@ from src.features.skills import (
 from src.features.company import (
     calculate_company_score,
 )
+from src.features.retrieval import (
+    calculate_retrieval_score,
+)
 
 
 @dataclass
@@ -65,6 +68,8 @@ class CandidateFeatureVector:
     company_score: float = 0.0
 
     github_score: float = 0.0
+    
+    retrieval_score: float = 0.0
 
     relocation_score: float = 0.0
 
@@ -111,6 +116,10 @@ class FeatureBuilder:
             ),
             company_score=
             calculate_company_score(
+                candidate
+            ),
+            retrieval_score=
+            calculate_retrieval_score(
                 candidate
             ),
         )
