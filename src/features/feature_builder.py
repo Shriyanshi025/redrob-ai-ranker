@@ -72,6 +72,12 @@ class CandidateFeatureVector:
     retrieval_score: float = 0.0
 
     relocation_score: float = 0.0
+    
+    capability_score: float = 0.0
+    
+    fit_score: float = 0.0
+    
+    hireability_score: float = 0.0
 
     final_score: float = 0.0
     

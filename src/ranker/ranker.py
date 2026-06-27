@@ -7,21 +7,31 @@ class CandidateRanker:
 
     def score(
         self,
-        features: CandidateFeatureVector,
+        features,
     ) -> float:
 
-        final_score = (
-            0.20 * features.title_match
-            + 0.20 * features.skill_score
-            + 0.20 * features.retrieval_score
-            + 0.15 * features.career_score
-            + 0.10 * features.experience_match
-            + 0.10 * features.company_score
-            + 0.03 * features.behavioral_score
-            + 0.01 * features.availability_score
-            + 0.005 * features.profile_quality_score
-            + 0.005 * features.engagement_score
+        capability_score = (
+            0.35 * features.skill_score
+            + 0.30 * features.retrieval_score
+            + 0.20 * features.career_score
+            + 0.15 * features.experience_match
         )
 
+        fit_score = (
+            0.65 * features.title_match
+            + 0.35 * features.company_score
+        )
+
+        hireability_score = (
+            0.45 * features.behavioral_score
+            + 0.35 * features.availability_score
+            + 0.20 * features.engagement_score
+        )
+
+        final_score = (
+            0.50 * capability_score
+            + 0.30 * fit_score
+            + 0.20 * hireability_score
+        )
 
         return final_score
