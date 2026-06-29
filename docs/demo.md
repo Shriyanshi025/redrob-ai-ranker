@@ -1,4 +1,10 @@
 # Demo
+python -m src.run_pipeline
+python -m src.generate_submission
+python -m src.generate_candidate_insights
+python -m src.generate_recruiter_report
+python -m src.generate_system_metrics
+python -m src.validate_submission
 
 ## Input
 
