@@ -1,16 +1,16 @@
+# Engineering Decisions
 
-# Major Engineering Decisions
+## Decision 1
+Used multi-factor ranking instead of keyword matching.
 
-1. Streaming candidate retrieval to reduce memory usage.
+## Decision 2
+Added explainability layer to provide recruiter-friendly evidence.
 
-2. Multi-factor ranking instead of keyword matching.
+## Decision 3
+Added role recommendations and skill-gap analysis.
 
-3. Explainability engine integrated with ranking decisions.
+## Decision 4
+Added analytics and reporting pipeline for reproducibility.
 
-4. Recruiter reports generated from actual ranking evidence.
-
-5. Deterministic pipeline for reproducible submissions.
-
-6. Validation scripts added to ensure submission correctness.
-
-7. Candidate insights include role recommendations and skill-gap analysis.
+## Decision 5
+Prioritized stability over risky algorithm modifications near submission.
