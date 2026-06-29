@@ -23,6 +23,10 @@ This project builds an intelligent ranking engine that evaluates candidates usin
 - Experience normalization
 - AI/ML domain understanding
 - Explainable ranking
+- Role Recommendation
+- Skill Gap Analysis
+- Recruiter Reports
+- System Metrics
 - Production-ready pipeline
 
 ## Tech Stack
@@ -48,6 +52,9 @@ submissions/
 ```bash
 python -m src.run_pipeline
 python -m src.generate_submission
+python -m src.generate_candidate_insights
+python -m src.generate_recruiter_report
+python -m src.generate_system_metrics
 ```
 
 ## Output
