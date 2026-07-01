@@ -5,10 +5,7 @@ pipeline = CandidateRankingPipeline()
 retriever = CandidateRetriever()
 
 results = pipeline.run(top_k=10)
-candidate_map = {
-    c["candidate_id"]: c
-    for c in retriever.stream_candidates()
-}
+candidate_map = {c["candidate_id"]: c for c in retriever.stream_candidates()}
 
 for score, candidate_id in results:
     candidate = candidate_map[candidate_id]

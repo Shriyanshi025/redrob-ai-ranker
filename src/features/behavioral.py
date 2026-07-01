@@ -2,6 +2,7 @@
 Behavioral and availability scoring.
 """
 
+
 def calculate_behavioral_score(candidate: dict) -> float:
     signals = candidate.get("redrob_signals", {})
 

@@ -1,11 +1,7 @@
 import csv
 from pathlib import Path
 
-
-SUBMISSION_FILE = (
-    Path("submissions")
-    / "submission.csv"
-)
+SUBMISSION_FILE = Path("submissions") / "submission.csv"
 
 
 def main():
@@ -16,9 +12,7 @@ def main():
         "r",
         encoding="utf-8",
     ) as f:
-        rows = list(
-            csv.DictReader(f)
-        )
+        rows = list(csv.DictReader(f))
 
     assert len(rows) == 100000
 
@@ -28,24 +22,13 @@ def main():
         "score",
     }
 
-    assert (
-        set(rows[0].keys())
-        == expected_columns
-    )
+    assert set(rows[0].keys()) == expected_columns
 
-    assert (
-        rows[0]["rank"]
-        == "1"
-    )
+    assert rows[0]["rank"] == "1"
 
-    assert (
-        rows[-1]["rank"]
-        == "100000"
-    )
+    assert rows[-1]["rank"] == "100000"
 
-    print(
-        "Submission test passed."
-    )
+    print("Submission test passed.")
 
 
 if __name__ == "__main__":

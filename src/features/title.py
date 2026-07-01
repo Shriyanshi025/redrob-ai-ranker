@@ -12,11 +12,7 @@ AI_TITLES = {
 
 
 def calculate_title_match(candidate: dict) -> float:
-    title = (
-        candidate["profile"]
-        .get("current_title", "")
-        .lower()
-    )
+    title = candidate["profile"].get("current_title", "").lower()
 
     for target in AI_TITLES:
         if target in title:

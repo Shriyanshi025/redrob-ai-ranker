@@ -38,3 +38,9 @@ data/candidates.jsonl
 data/*.parquet
 data/*.feather
 data/*.pkl
+
+__pycache__/
+*.pyc
+.venv/
+.env
+project_tree.txt

@@ -27,14 +27,9 @@ def main():
     recommender = RoleRecommender()
     gap_analyzer = SkillGapAnalyzer()
 
-    results = pipeline.run(
-        top_k=TOP_N
-    )
+    results = pipeline.run(top_k=TOP_N)
 
-    candidate_map = {
-        c["candidate_id"]: c
-        for c in retriever.stream_candidates()
-    }
+    candidate_map = {c["candidate_id"]: c for c in retriever.stream_candidates()}
 
     report = []
 
@@ -45,9 +40,7 @@ def main():
         results,
         start=1,
     ):
-        candidate = candidate_map.get(
-            candidate_id
-        )
+        candidate = candidate_map.get(candidate_id)
 
         if not candidate:
             continue
@@ -57,54 +50,36 @@ def main():
             score,
         )
 
-        roles = recommender.recommend(
-            candidate
-        )
+        roles = recommender.recommend(candidate)
 
         gaps = gap_analyzer.analyze(
             candidate,
             roles,
         )
 
-        profile = candidate.get(
-            "profile",
-            {}
-        )
+        profile = candidate.get("profile", {})
 
         report.append(
             {
                 "rank": rank,
                 "candidate_id": candidate_id,
                 "score": round(score, 6),
-                "name": profile.get(
-                    "name",
-                    "Unknown"
-                ),
-                "current_title": profile.get(
-                    "current_title",
-                    ""
-                ),
+                "name": profile.get("name", "Unknown"),
+                "current_title": profile.get("current_title", ""),
                 "years_of_experience": profile.get(
                     "years_of_experience",
                     0,
                 ),
-                "top_reasons": explanation[
-                    "top_reasons"
-                ],
+                "top_reasons": explanation["top_reasons"],
                 "recommended_roles": roles,
                 "skill_gaps": gaps,
             }
         )
 
     output_dir = Path("outputs")
-    output_dir.mkdir(
-        exist_ok=True
-    )
+    output_dir.mkdir(exist_ok=True)
 
-    output_file = (
-        output_dir
-        / "recruiter_report.json"
-    )
+    output_file = output_dir / "recruiter_report.json"
 
     with open(
         output_file,
@@ -118,9 +93,7 @@ def main():
             ensure_ascii=False,
         )
 
-    print(
-        f"Saved: {output_file}"
-    )
+    print(f"Saved: {output_file}")
 
 
 if __name__ == "__main__":

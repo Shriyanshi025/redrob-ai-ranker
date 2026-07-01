@@ -34,14 +34,8 @@ def calculate_skill_score(candidate: dict) -> float:
             .strip()
         )
 
+    skills = {normalize_skill(skill["name"]) for skill in candidate.get("skills", [])}
 
-    skills = {
-        normalize_skill(skill["name"])
-        for skill in candidate.get("skills", [])
-    }
-
-    matches = len(
-        skills.intersection(TARGET_SKILLS)
-    )
+    matches = len(skills.intersection(TARGET_SKILLS))
 
     return min(matches / 6.0, 1.0)

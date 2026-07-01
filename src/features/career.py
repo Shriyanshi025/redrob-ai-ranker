@@ -21,19 +21,13 @@ KEYWORDS = {
 
 
 def calculate_career_score(candidate: dict) -> float:
-    history = candidate.get(
-        "career_history",
-        []
-    )
+    history = candidate.get("career_history", [])
 
     matches = 0
 
     for job in history:
 
-        text = " ".join(
-            str(v)
-            for v in job.values()
-        ).lower()
+        text = " ".join(str(v) for v in job.values()).lower()
 
         for keyword in KEYWORDS:
             if keyword in text:

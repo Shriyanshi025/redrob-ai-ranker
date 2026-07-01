@@ -12,26 +12,18 @@ def main():
 
     pipeline = CandidateRankingPipeline()
 
-    results = pipeline.run(
-        top_k=100
-    )
+    results = pipeline.run(top_k=100)
 
     runtime = round(
         time.time() - start,
         2,
     )
 
-    scores = [
-        score
-        for score, _
-        in results
-    ]
+    scores = [score for score, _ in results]
 
     metrics = {
         "pipeline_status": "success",
-        "total_top_candidates": len(
-            results
-        ),
+        "total_top_candidates": len(results),
         "highest_score": round(
             max(scores),
             6,
@@ -48,14 +40,9 @@ def main():
     }
 
     output_dir = Path("outputs")
-    output_dir.mkdir(
-        exist_ok=True
-    )
+    output_dir.mkdir(exist_ok=True)
 
-    output_file = (
-        output_dir /
-        "system_metrics.json"
-    )
+    output_file = output_dir / "system_metrics.json"
 
     with open(
         output_file,
@@ -68,9 +55,7 @@ def main():
             indent=2,
         )
 
-    print(
-        f"Saved: {output_file}"
-    )
+    print(f"Saved: {output_file}")
 
 
 if __name__ == "__main__":

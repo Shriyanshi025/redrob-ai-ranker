@@ -1,10 +1,7 @@
 import csv
 from pathlib import Path
 
-SUBMISSION_FILE = (
-    Path("submissions")
-    / "submission.csv"
-)
+SUBMISSION_FILE = Path("submissions") / "submission.csv"
 
 
 def main():
@@ -21,10 +18,7 @@ def main():
 
     print(f"Rows: {len(rows)}")
 
-    ids = [
-        row["candidate_id"]
-        for row in rows
-    ]
+    ids = [row["candidate_id"] for row in rows]
 
     unique_ids = len(set(ids))
 
@@ -35,21 +29,12 @@ def main():
     else:
         print("No duplicates found.")
 
-    scores = [
-        float(row["score"])
-        for row in rows
-    ]
+    scores = [float(row["score"]) for row in rows]
 
-    print(
-        f"Highest score: {max(scores):.6f}"
-    )
-    print(
-        f"Lowest score: {min(scores):.6f}"
-    )
+    print(f"Highest score: {max(scores):.6f}")
+    print(f"Lowest score: {min(scores):.6f}")
 
-    print(
-        "Submission validation completed."
-    )
+    print("Submission validation completed.")
 
 
 if __name__ == "__main__":

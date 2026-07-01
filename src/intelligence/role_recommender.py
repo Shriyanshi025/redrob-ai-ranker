@@ -50,10 +50,7 @@ class RoleRecommender:
     }
 
     def recommend(self, candidate: Dict) -> List[str]:
-        skills = {
-            s.get("name", "").lower()
-            for s in candidate.get("skills", [])
-        }
+        skills = {s.get("name", "").lower() for s in candidate.get("skills", [])}
 
         scores = []
 
@@ -63,10 +60,6 @@ class RoleRecommender:
 
         scores.sort(key=lambda x: x[1], reverse=True)
 
-        recommendations = [
-            role
-            for role, score in scores
-            if score >= 2
-        ]
+        recommendations = [role for role, score in scores if score >= 2]
 
         return recommendations[:3]

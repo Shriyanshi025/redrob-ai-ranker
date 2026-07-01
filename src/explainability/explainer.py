@@ -17,10 +17,7 @@ class CandidateExplainer:
         years = profile.get("years_of_experience", 0)
         title = profile.get("current_title", "")
 
-        skill_names = {
-            s.get("name", "").lower()
-            for s in skills
-        }
+        skill_names = {s.get("name", "").lower() for s in skills}
 
         ai_skills = {
             "llms",
@@ -36,7 +33,7 @@ class CandidateExplainer:
         }
 
         matched = ai_skills.intersection(skill_names)
-        
+
         data_skills = {
             "spark",
             "sql",
@@ -54,14 +51,10 @@ class CandidateExplainer:
             )
 
         if len(matched) >= 2:
-            reasons.append(
-                f"Strong AI skill set ({len(matched)} relevant skills)"
-            )
+            reasons.append(f"Strong AI skill set ({len(matched)} relevant skills)")
 
         if years >= 5:
-            reasons.append(
-                f"{years:.1f} years of industry experience"
-            )
+            reasons.append(f"{years:.1f} years of industry experience")
 
         title_lower = title.lower()
 
@@ -77,9 +70,7 @@ class CandidateExplainer:
         ]
 
         if any(t in title_lower for t in important_titles):
-            reasons.append(
-                f"Relevant role: {title}"
-            )
+            reasons.append(f"Relevant role: {title}")
 
         if feature_scores:
             top = sorted(
@@ -89,14 +80,10 @@ class CandidateExplainer:
             )[:2]
 
             for name, value in top:
-                reasons.append(
-                    f"Strong {name.replace('_', ' ')} ({value:.2f})"
-                )
+                reasons.append(f"Strong {name.replace('_', ' ')} ({value:.2f})")
 
         if not reasons:
-            reasons.append(
-                "Good overall profile alignment"
-            )
+            reasons.append("Good overall profile alignment")
 
         return {
             "candidate_id": candidate["candidate_id"],

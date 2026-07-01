@@ -8,40 +8,20 @@ def load_json(path):
 
 
 def main():
-    metrics = load_json(
-        "outputs/system_metrics.json"
-    )
+    metrics = load_json("outputs/system_metrics.json")
 
-    ranking = load_json(
-        "outputs/ranking_analysis.json"
-    )
+    ranking = load_json("outputs/ranking_analysis.json")
 
-    dataset = load_json(
-        "outputs/dataset_stats.json"
-    )
+    dataset = load_json("outputs/dataset_stats.json")
 
     report = {
-        "project_name":
-            "Redrob AI Ranker",
-
-        "pipeline_status":
-            metrics["pipeline_status"],
-
-        "dataset_size":
-            dataset["total_candidates"],
-
-        "average_experience":
-            dataset["average_experience"],
-
-        "highest_score":
-            ranking["highest_score"],
-
-        "top_100_cutoff":
-            ranking["top_100_cutoff"],
-
-        "runtime_seconds":
-            metrics["runtime_seconds"],
-
+        "project_name": "Redrob AI Ranker",
+        "pipeline_status": metrics["pipeline_status"],
+        "dataset_size": dataset["total_candidates"],
+        "average_experience": dataset["average_experience"],
+        "highest_score": ranking["highest_score"],
+        "top_100_cutoff": ranking["top_100_cutoff"],
+        "runtime_seconds": metrics["runtime_seconds"],
         "generated_reports": [
             "submission.csv",
             "top_candidates_with_insights.json",
@@ -52,10 +32,7 @@ def main():
         ],
     }
 
-    output = (
-        Path("outputs")
-        / "project_summary.json"
-    )
+    output = Path("outputs") / "project_summary.json"
 
     with open(
         output,

@@ -1,6 +1,5 @@
 from pathlib import Path
 
-
 FILES = [
     "outputs/top_candidates_with_insights.json",
     "outputs/recruiter_report.json",
@@ -14,17 +13,11 @@ def main():
 
         assert path.exists()
 
-        assert (
-            path.stat().st_size > 0
-        )
+        assert path.stat().st_size > 0
 
-        print(
-            f"Found: {file}"
-        )
+        print(f"Found: {file}")
 
-    print(
-        "Reports test passed."
-    )
+    print("Reports test passed.")
 
 
 if __name__ == "__main__":

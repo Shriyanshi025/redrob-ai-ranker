@@ -54,19 +54,14 @@ class SkillGapAnalyzer:
         recommended_roles: List[str],
     ) -> Dict[str, List[str]]:
 
-        skills = {
-            s.get("name", "").lower()
-            for s in candidate.get("skills", [])
-        }
+        skills = {s.get("name", "").lower() for s in candidate.get("skills", [])}
 
         gaps = {}
 
         for role in recommended_roles:
             required = self.ROLE_REQUIREMENTS.get(role, set())
 
-            missing = sorted(
-                required - skills
-            )
+            missing = sorted(required - skills)
 
             gaps[role] = missing[:5]
 

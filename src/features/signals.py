@@ -63,8 +63,4 @@ def calculate_engagement_score(
         0,
     )
 
-    return (
-        0.4 * response
-        + 0.3 * interview
-        + 0.3 * acceptance
-    )
+    return 0.4 * response + 0.3 * interview + 0.3 * acceptance

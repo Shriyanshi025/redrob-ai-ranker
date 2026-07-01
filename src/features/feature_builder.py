@@ -44,11 +44,11 @@ class CandidateFeatureVector:
     retrieval_system_score: float = 0.0
 
     ranking_system_score: float = 0.0
-    
+
     skill_score: float = 0.0
 
     embedding_score: float = 0.0
-    
+
     career_score: float = 0.0
 
     llm_score: float = 0.0
@@ -56,31 +56,32 @@ class CandidateFeatureVector:
     behavioral_score: float = 0.0
 
     activity_score: float = 0.0
-    
+
     availability_score: float = 0.0
-    
+
     profile_quality_score: float = 0.0
-    
+
     engagement_score: float = 0.0
 
     recruiter_response_score: float = 0.0
-    
+
     company_score: float = 0.0
 
     github_score: float = 0.0
-    
+
     retrieval_score: float = 0.0
 
     relocation_score: float = 0.0
-    
+
     capability_score: float = 0.0
-    
+
     fit_score: float = 0.0
-    
+
     hireability_score: float = 0.0
 
     final_score: float = 0.0
-    
+
+
 class FeatureBuilder:
 
     def build(
@@ -102,30 +103,10 @@ class FeatureBuilder:
             career_score=calculate_career_score(
                 candidate,
             ),
-            availability_score=
-            calculate_availability_score(
-                candidate
-            ),
-
-            profile_quality_score=
-            calculate_profile_quality_score(
-                candidate
-            ),
-
-            engagement_score=
-            calculate_engagement_score(
-                candidate
-            ),
-            skill_score=
-            calculate_skill_score(
-                candidate
-            ),
-            company_score=
-            calculate_company_score(
-                candidate
-            ),
-            retrieval_score=
-            calculate_retrieval_score(
-                candidate
-            ),
+            availability_score=calculate_availability_score(candidate),
+            profile_quality_score=calculate_profile_quality_score(candidate),
+            engagement_score=calculate_engagement_score(candidate),
+            skill_score=calculate_skill_score(candidate),
+            company_score=calculate_company_score(candidate),
+            retrieval_score=calculate_retrieval_score(candidate),
         )

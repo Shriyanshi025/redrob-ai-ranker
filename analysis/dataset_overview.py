@@ -18,7 +18,6 @@ from __future__ import annotations
 import json
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
-from typing import Any
 
 from analysis.common import (
     DATA_DIR,
@@ -63,10 +62,7 @@ class DatasetStatistics:
     processing_time_seconds: float = 0.0
 
     required_field_presence: dict[str, int] = field(
-        default_factory=lambda: {
-            field_name: 0
-            for field_name in REQUIRED_FIELDS
-        }
+        default_factory=lambda: {field_name: 0 for field_name in REQUIRED_FIELDS}
     )
 
     @property
@@ -89,10 +85,7 @@ def get_record_size(line: str) -> int:
 
 
 def check_required_fields(record: dict) -> dict[str, bool]:
-    return {
-        field: field in record
-        for field in REQUIRED_FIELDS
-    }
+    return {field: field in record for field in REQUIRED_FIELDS}
 
 
 def analyze_dataset(file_path: Path) -> DatasetStatistics:
@@ -135,8 +128,7 @@ def analyze_dataset(file_path: Path) -> DatasetStatistics:
 
 def generate_markdown_report(stats: DatasetStatistics) -> str:
     smallest_size = (
-        0 if stats.smallest_record_size == float("inf")
-        else stats.smallest_record_size
+        0 if stats.smallest_record_size == float("inf") else stats.smallest_record_size
     )
 
     return f"""# Dataset Overview Report

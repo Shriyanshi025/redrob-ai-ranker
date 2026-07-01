@@ -3,7 +3,6 @@ Candidate Retrieval Engine
 """
 
 import json
-from pathlib import Path
 
 from src.config.constants import CANDIDATE_DATASET
 

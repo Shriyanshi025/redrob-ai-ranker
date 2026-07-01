@@ -16,7 +16,6 @@ import time
 from pathlib import Path
 from typing import Any
 
-
 # =============================================================================
 # Project Paths
 # =============================================================================
@@ -32,6 +31,7 @@ PLOTS_DIR = PROJECT_ROOT / "analysis" / "plots"
 # =============================================================================
 # Logging
 # =============================================================================
+
 
 def setup_logging() -> logging.Logger:
     """
@@ -49,6 +49,7 @@ def setup_logging() -> logging.Logger:
 # =============================================================================
 # File Saving Utilities
 # =============================================================================
+
 
 def save_json(data: Any, output_path: Path) -> None:
     """
@@ -86,6 +87,7 @@ def save_markdown(content: str, output_path: Path) -> None:
 # Formatting Utilities
 # =============================================================================
 
+
 def human_readable_size(size_bytes: int) -> str:
     """
     Convert bytes into a human-readable string.
@@ -108,6 +110,7 @@ def human_readable_size(size_bytes: int) -> str:
 # =============================================================================
 # Timer
 # =============================================================================
+
 
 class Timer:
     """

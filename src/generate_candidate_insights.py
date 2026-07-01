@@ -9,7 +9,6 @@ from src.pipeline.pipeline import (
     CandidateRankingPipeline,
 )
 
-
 TOP_N = 100
 
 
@@ -20,14 +19,9 @@ def main():
     retriever = CandidateRetriever()
     pipeline = CandidateRankingPipeline()
 
-    results = pipeline.run(
-        top_k=TOP_N
-    )
+    results = pipeline.run(top_k=TOP_N)
 
-    candidate_map = {
-        c["candidate_id"]: c
-        for c in retriever.stream_candidates()
-    }
+    candidate_map = {c["candidate_id"]: c for c in retriever.stream_candidates()}
 
     insights = []
 
@@ -38,9 +32,7 @@ def main():
         results,
         start=1,
     ):
-        candidate = candidate_map.get(
-            candidate_id
-        )
+        candidate = candidate_map.get(candidate_id)
 
         if not candidate:
             continue
@@ -50,9 +42,7 @@ def main():
             score,
         )
 
-        roles = recommender.recommend(
-            candidate
-        )
+        roles = recommender.recommend(candidate)
 
         gaps = gap_analyzer.analyze(
             candidate,
@@ -65,9 +55,7 @@ def main():
                 "candidate_id": candidate_id,
                 "score": round(score, 6),
                 "recommended_roles": roles,
-                "top_reasons": explanation[
-                    "top_reasons"
-                ],
+                "top_reasons": explanation["top_reasons"],
                 "skill_gaps": gaps,
             }
         )
@@ -75,10 +63,7 @@ def main():
     output_dir = Path("outputs")
     output_dir.mkdir(exist_ok=True)
 
-    output_file = (
-        output_dir /
-        "top_candidates_with_insights.json"
-    )
+    output_file = output_dir / "top_candidates_with_insights.json"
 
     with open(
         output_file,

@@ -14,9 +14,7 @@ class CandidateRankingPipeline:
 
     def run(self, top_k: int = 10):
 
-        job_text = load_job_description(
-            JOB_DESCRIPTION_PATH
-        )
+        job_text = load_job_description(JOB_DESCRIPTION_PATH)
 
         job = JobAnalyzer().parse(job_text)
 

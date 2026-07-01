@@ -24,8 +24,6 @@ class JobAnalyzer:
         )
 
         if experience:
-            requirements.minimum_experience = float(
-                experience.group(1)
-            )
+            requirements.minimum_experience = float(experience.group(1))
 
         return requirements

@@ -26,17 +26,9 @@ def calculate_retrieval_score(
     candidate: dict,
 ) -> float:
 
-    skills = {
-        s["name"].lower()
-        for s in candidate.get(
-            "skills",
-            []
-        )
-    }
+    skills = {s["name"].lower() for s in candidate.get("skills", [])}
 
-    matches = len(
-        skills.intersection(KEYWORDS)
-    )
+    matches = len(skills.intersection(KEYWORDS))
 
     return min(
         matches / 5.0,

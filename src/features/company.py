@@ -19,17 +19,10 @@ PRODUCT_COMPANIES = {
 def calculate_company_score(
     candidate: dict,
 ) -> float:
-    history = candidate.get(
-        "career_history",
-        []
-    )
+    history = candidate.get("career_history", [])
 
     for job in history:
-        company = (
-            job.get("company", "")
-            .lower()
-            .strip()
-        )
+        company = job.get("company", "").lower().strip()
 
         if company in PRODUCT_COMPANIES:
             return 1.0

@@ -1,8 +1,3 @@
-from src.features.feature_builder import (
-    CandidateFeatureVector,
-)
-
-
 class CandidateRanker:
 
     def score(
@@ -17,10 +12,7 @@ class CandidateRanker:
             + 0.15 * features.experience_match
         )
 
-        fit_score = (
-            0.65 * features.title_match
-            + 0.35 * features.company_score
-        )
+        fit_score = 0.65 * features.title_match + 0.35 * features.company_score
 
         hireability_score = (
             0.45 * features.behavioral_score
@@ -29,9 +21,7 @@ class CandidateRanker:
         )
 
         final_score = (
-            0.60 * capability_score
-            + 0.33 * fit_score
-            + 0.07 * hireability_score
+            0.60 * capability_score + 0.33 * fit_score + 0.07 * hireability_score
         )
 
         return final_score

@@ -51,7 +51,8 @@ class SchemaStatistics:
     min_skill_entries: int = 10**9
 
     processing_time_seconds: float = 0.0
-    
+
+
 def analyze_schema() -> SchemaStatistics:
     stats = SchemaStatistics()
     timer = Timer()
@@ -68,23 +69,17 @@ def analyze_schema() -> SchemaStatistics:
 
             # Top-level keys
             for key in record:
-                stats.top_level_keys[key] = (
-                    stats.top_level_keys.get(key, 0) + 1
-                )
+                stats.top_level_keys[key] = stats.top_level_keys.get(key, 0) + 1
 
             # Profile keys
             profile = record.get("profile", {})
             for key in profile:
-                stats.profile_keys[key] = (
-                    stats.profile_keys.get(key, 0) + 1
-                )
+                stats.profile_keys[key] = stats.profile_keys.get(key, 0) + 1
 
             # Redrob signal keys
             signals = record.get("redrob_signals", {})
             for key in signals:
-                stats.redrob_signal_keys[key] = (
-                    stats.redrob_signal_keys.get(key, 0) + 1
-                )
+                stats.redrob_signal_keys[key] = stats.redrob_signal_keys.get(key, 0) + 1
 
             # Career history
             career_count = len(record.get("career_history", []))
@@ -121,6 +116,7 @@ def analyze_schema() -> SchemaStatistics:
 
     stats.processing_time_seconds = timer.elapsed()
     return stats
+
 
 def generate_report(stats: SchemaStatistics) -> str:
     return f"""# Schema Analysis Report
