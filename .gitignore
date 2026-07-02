@@ -39,8 +39,8 @@ data/*.parquet
 data/*.feather
 data/*.pkl
 
-__pycache__/
-*.pyc
-.venv/
-.env
+# Generated project files
 project_tree.txt
+
+# Generated submissions (optional)
+# submissions/*.csv
