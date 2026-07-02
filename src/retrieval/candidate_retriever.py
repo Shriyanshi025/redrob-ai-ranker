@@ -13,12 +13,19 @@ class CandidateRetriever:
             raise FileNotFoundError(f"""
 Dataset not found.
 
-Please download candidates.jsonl from:
+Please download candidates.jsonl from the GitHub Releases page:
+
 https://github.com/Shriyanshi025/redrob-ai-ranker/releases
 
-and place it at:
+Then place it here:
 
 {CANDIDATE_DATASET}
+
+Expected structure:
+
+project_root/
+└── data/
+    └── candidates.jsonl
 """)
 
         with CANDIDATE_DATASET.open(
