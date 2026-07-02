@@ -8,8 +8,21 @@ from src.config.constants import CANDIDATE_DATASET
 
 
 class CandidateRetriever:
-
     def stream_candidates(self):
+        if not CANDIDATE_DATASET.exists():
+            raise FileNotFoundError(
+                f"""
+Dataset not found.
+
+Please download candidates.jsonl from:
+https://github.com/Shriyanshi025/redrob-ai-ranker/releases
+
+and place it at:
+
+{CANDIDATE_DATASET}
+"""
+            )
+
         with CANDIDATE_DATASET.open(
             "r",
             encoding="utf-8",
